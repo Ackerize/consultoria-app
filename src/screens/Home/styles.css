@@ -1,0 +1,47 @@
+.layout-navbar-fixed
+  .layout-wrapper:not(.layout-horizontal):not(.layout-without-menu)
+  .layout-page {
+  padding-top: 76px !important;
+}
+/* Default navbar */
+.layout-navbar-fixed .layout-wrapper:not(.layout-without-menu) .layout-page {
+  padding-top: 64px !important;
+}
+.layout-menu.menu-vertical {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+/* Navbar page z-index issue solution */
+.content-wrapper .navbar {
+  z-index: auto;
+}
+
+.menu-item .menu-link {
+  border-radius: 0.375rem;
+}
+.menu-icon {
+  display: flex;
+}
+.menu-item {
+  cursor: pointer;
+}
+.menu-inner.menu-bottom {
+  justify-content: flex-end;
+}
+.menu .app-brand {
+  height: 64px;
+  margin-top: 12px;
+  position: absolute;
+}
+
+@media (max-width: 1199.98px) {
+  .layout-menu-expanded .app-brand .layout-menu-toggle {
+    position: fixed;
+    z-index: 999;
+  }
+}

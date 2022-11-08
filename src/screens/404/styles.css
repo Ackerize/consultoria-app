@@ -1,0 +1,25 @@
+.page-404 {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+.misc-wrapper.auth {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.misc-wrapper.no-auth {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - (1.625rem * 2));
+    text-align: center;
+  }
+
+.misc-wrapper > .go-home {
+    width: 30%;
+}
