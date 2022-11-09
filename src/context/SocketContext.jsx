@@ -8,12 +8,13 @@ import { types } from "../types/types";
 import {
   scrollToBottomAnimated,
 } from "../utils/scrollToBottom";
+import { SOCKETS_BASE_URL_DEV, SOCKETS_BASE_URL_PROD } from "../constants/constants";
 
 export const SocketContext = createContext();
 
 export const SocketProvider = ({ children }) => {
   const { socket, online, conectarSocket, desconectarSocket } = useSocket(
-    "http://localhost:8080"
+    SOCKETS_BASE_URL_PROD
   );
   const { user: auth } = useContext(UserContext);
   const { dispatch } = useContext(ChatContext);
