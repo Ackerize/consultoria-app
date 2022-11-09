@@ -14,7 +14,7 @@ export const SocketContext = createContext();
 
 export const SocketProvider = ({ children }) => {
   const { socket, online, conectarSocket, desconectarSocket } = useSocket(
-    SOCKETS_BASE_URL_PROD
+    SOCKETS_BASE_URL_DEV
   );
   const { user: auth } = useContext(UserContext);
   const { dispatch } = useContext(ChatContext);
@@ -34,6 +34,7 @@ export const SocketProvider = ({ children }) => {
   // Escuchar los cambios en los usuarios conectados
   useEffect(() => {
     socket?.on("lista-usuarios", (usuarios) => {
+      console.log("lista-usuarios: ", usuarios, " - ", new Date());
       dispatch({
         type: types.usuariosCargados,
         payload: usuarios,

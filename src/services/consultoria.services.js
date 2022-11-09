@@ -4,9 +4,9 @@ import { capitalizeString } from "../utils/data-parse";
 
 const services = {};
 
-services.getByUser = async (idUser) => {
+services.getByUser = async (idUser, filter = 'all') => {
   try {
-    const { data } = await axios.get(`${BASE_URL_PROD}/consultoria/user?userId=${idUser}&sortby=startDate&sort=asc&filter=Aceptada`);
+    const { data } = await axios.get(`${BASE_URL_DEV}/consultoria/user?userId=${idUser}&sortby=startDate&sort=asc&filter=${filter}`);
     return data;
   } catch (error) {
     if (error.response) {
@@ -22,7 +22,7 @@ services.getByUser = async (idUser) => {
 
 services.getAll = async () => {
   try {
-    const { data } = await axios.get(`${BASE_URL_PROD}/consultoria?filter=all`);
+    const { data } = await axios.get(`${BASE_URL_DEV}/consultoria?filter=all`);
     return data;
   } catch (error) {
     if (error.response) {
@@ -38,7 +38,7 @@ services.getAll = async () => {
 
 services.create = async (consultoria) => {
   try {
-    const { data } = await axios.post(`${BASE_URL_PROD}/consultoria/new`, consultoria);
+    const { data } = await axios.post(`${BASE_URL_DEV}/consultoria/new`, consultoria);
     return data;
   } catch (error) {
     if (error.response) {
@@ -54,7 +54,7 @@ services.create = async (consultoria) => {
 
 services.toggleStatus = async (idConsultoria, newStatus) => {
   try {
-    const { data } = await axios.patch(`${BASE_URL_PROD}/consultoria/toggle/${idConsultoria}`, { status: capitalizeString(newStatus) });
+    const { data } = await axios.patch(`${BASE_URL_DEV}/consultoria/toggle/${idConsultoria}`, { status: capitalizeString(newStatus) });
     return data;
   } catch (error) {
     if (error.response) {

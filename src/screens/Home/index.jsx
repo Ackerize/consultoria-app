@@ -10,17 +10,22 @@ import "./styles.css";
 const Home = () => {
   const [loading, setLoading] = useState(false);
   const [consultancies, setConsultancies] = useState([]);
-  const { user } = useContext(UserContext);
+  const { user: auth } = useContext(UserContext);
   useEffect(() => {
     setLoading(true);
-    consultoriaService.getByUser(user.user.uid).then((data) => {
-      if (data.ok) {
-        setConsultancies(data.consultorias);
-      } else {
-        toast.error(data.msg);
-      }
-      setLoading(false);
-    });
+    consultoriaService
+      .getByUser(
+        auth.user.uid,
+        auth.user.type === "cliente" ? "Aceptada" : "all"
+      )
+      .then((data) => {
+        if (data.ok) {
+          setConsultancies(data.consultorias);
+        } else {
+          toast.error(data.msg);
+        }
+        setLoading(false);
+      });
   }, []);
 
   if (loading) return <Loading />;

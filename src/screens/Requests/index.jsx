@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { toast } from "react-toastify";
 import ConsultingRequest from "../../components/ConsultingRequest";
 import Loading from "../../components/Loading";
 import SearchBar from "../../components/SearchBar";
+import { UserContext } from "../../context/UserContext";
 import consultoriaService from "../../services/consultoria.services";
 
 const Requests = () => {
   const [loading, setLoading] = useState(false);
   const [consultancies, setConsultancies] = useState([]);
+  const { user: auth} = useContext(UserContext);
 
   useEffect(() => {
     setLoading(true);
-    consultoriaService.getAll().then((data) => {
+    consultoriaService.getByUser(auth.user.uid).then((data) => {
       if (data.ok) {
         setConsultancies(data.consultorias);
       } else {
