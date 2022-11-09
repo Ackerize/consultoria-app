@@ -8,7 +8,7 @@ import { types } from "../types/types";
 import {
   scrollToBottomAnimated,
 } from "../utils/scrollToBottom";
-import { SOCKETS_BASE_URL_DEV, SOCKETS_BASE_URL_PROD } from "../constants/constants";
+import { SOCKETS_BASE_URL_DEV } from "../constants/constants";
 
 export const SocketContext = createContext();
 

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL_DEV, BASE_URL_PROD } from "../constants/constants";
+import { BASE_URL_DEV } from "../constants/constants";
 import { capitalizeString } from "../utils/data-parse";
 
 const services = {};
